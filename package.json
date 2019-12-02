@@ -1,0 +1,14 @@
+{
+  "name": "advent-of-code",
+  "version": "1.0.0",
+  "description": "",
+  "main": "day1-1.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "author": "Vincent Guillemette",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
