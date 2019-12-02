@@ -10,5 +10,9 @@
   "license": "ISC",
   "dependencies": {
     "express": "^4.17.1"
+  },
+  "repository": {
+    "type" : "git",
+    "url" : "https://github.com/guignol1981/advent-of-code.git"
   }
 }
