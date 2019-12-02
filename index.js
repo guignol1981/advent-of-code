@@ -1,1 +1,1 @@
-require(`./day-${process.argv[2]}/star-${process.argv[3]}/solution`);
+require(`./days/day-${process.argv[2]}/star-${process.argv[3]}/solution`);
