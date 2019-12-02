@@ -1,11 +1,11 @@
 const input = require('./input');
 
-const calcFuel = (value, fuelSum = 0) => {
-    const mass = Math.floor(value/3) - 2;
-    if (mass < 0) {
+const calcFuel = (mass, fuelSum = 0) => {
+    const fuel = Math.floor(mass/3) - 2;
+    if (fuel < 0) {
         return fuelSum;
     } else {
-        return calcFuel(mass, fuelSum + mass)
+        return calcFuel(fuel, fuelSum + fuel)
     }
 };
 
