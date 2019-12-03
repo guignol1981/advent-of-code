@@ -24,15 +24,15 @@ const f = (noun = 0, verb = 0)  => {
     
     if (copy[0] !== 19690720) {
         if (verb < 99) {
-            f(noun, ++verb);
+            return f(noun, ++verb);
         } else {
             verb = 0;
 
-            f(++noun, verb)
+           return f(++noun, verb)
         }
     } else {
-        console.log(noun, verb);
+        return [noun, verb];
     }
 }
 
-f();
+console.log(f());
