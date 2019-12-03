@@ -20,4 +20,4 @@ for (let i = 0; i < input.length; i+=4) {
     break;
 }
 
-console.log(input);
+console.log(input[0]);
