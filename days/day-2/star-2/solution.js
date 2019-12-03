@@ -35,4 +35,4 @@ const f = (noun = 0, verb = 0)  => {
     }
 }
 
-console.log(f());
+f();
