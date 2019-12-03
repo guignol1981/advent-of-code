@@ -26,9 +26,7 @@ const f = (noun = 0, verb = 0)  => {
         if (verb < 99) {
             return f(noun, ++verb);
         } else {
-            verb = 0;
-
-           return f(++noun, verb)
+           return f(++noun, 0)
         }
     } else {
         return [noun, verb];
