@@ -22,39 +22,37 @@ let centralPort = { x: 0, y: 0 };
 
 const tracePath = (wirePath) => {
     let pointer = Object.assign({}, centralPort);
-    let totalSteps = 0;
+
+    const step = () => {
+        board[`${pointer.y},${pointer.x}`] = board[`${pointer.y},${pointer.x}`] || {};
+        board[`${pointer.y},${pointer.x}`]['stepsFromCentralPort'] = Math.abs(pointer.x - centralPort.x) + Math.abs(pointer.y - centralPort.y);
+        board[`${pointer.y},${pointer.x}`][wirePath.id] = true;
+    }
+
     wirePath.forEach(wp => {
         switch (wp.direction) {
             case 'U':
                 for (let index = 0; index < wp.steps; index++) {
                     pointer.y++;
-                    board[`${pointer.y},${pointer.x}`] = board[`${pointer.y},${pointer.x}`] || {};
-                    board[`${pointer.y},${pointer.x}`]['steps'] = Math.abs(pointer.x - centralPort.x) + Math.abs(pointer.y - centralPort.y);
-                    board[`${pointer.y},${pointer.x}`][wirePath.id] = true;
+                    step();
                 }
                 break;
             case 'D':
                 for (let index = 0; index < wp.steps; index++) {
                     pointer.y--;
-                    board[`${pointer.y},${pointer.x}`] = board[`${pointer.y},${pointer.x}`] || {};
-                    board[`${pointer.y},${pointer.x}`]['steps'] = Math.abs(pointer.x - centralPort.x) + Math.abs(pointer.y - centralPort.y);
-                    board[`${pointer.y},${pointer.x}`][wirePath.id] = true;
+                    step();
                 }
                 break;
             case 'R':
                 for (let index = 0; index < wp.steps; index++) {
                     pointer.x++;
-                    board[`${pointer.y},${pointer.x}`] = board[`${pointer.y},${pointer.x}`] || {};
-                    board[`${pointer.y},${pointer.x}`]['steps'] = Math.abs(pointer.x - centralPort.x) + Math.abs(pointer.y - centralPort.y);
-                    board[`${pointer.y},${pointer.x}`][wirePath.id] = true;
+                    step();
                 }
                 break;
             case 'L':
                 for (let index = 0; index < wp.steps; index++) {
                     pointer.x--;
-                    board[`${pointer.y},${pointer.x}`] = board[`${pointer.y},${pointer.x}`] || {};
-                    board[`${pointer.y},${pointer.x}`]['steps'] = Math.abs(pointer.x - centralPort.x) + Math.abs(pointer.y - centralPort.y);
-                    board[`${pointer.y},${pointer.x}`][wirePath.id] = true;
+                    step();
                 }
                 break;
         }
@@ -64,6 +62,6 @@ const tracePath = (wirePath) => {
 tracePath(wirePath1);
 tracePath(wirePath2);
 
-const solution = Math.min(...Object.values(board).filter(c => c['1'] && c['2']).map(c => c.steps));
+const solution = Math.min(...Object.values(board).filter(c => c['1'] && c['2']).map(c => c['stepsFromCentralPort']));
 
 console.log(solution);
